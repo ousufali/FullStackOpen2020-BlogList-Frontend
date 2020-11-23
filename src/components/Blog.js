@@ -23,8 +23,9 @@ const Blog = ({ blog, blogs, setBlog, user }) => {
 
   const updateLike = async () => {
     console.log("like clicked")
+    /////////////////////////////////////////////////
 
-
+//////////////////////////////////////////////////////
 
     const updatedBlog = {
       title: blog.title,
@@ -35,6 +36,7 @@ const Blog = ({ blog, blogs, setBlog, user }) => {
     console.log("likes", updatedBlog.likes)
 
     const recievedBlog = await BlogServices.update(updatedBlog, blog.id)
+
 
     const newBlogs = [...blogs]
     const blogIndex = newBlogs.findIndex(x => x.id === blog.id)
@@ -60,14 +62,14 @@ const Blog = ({ blog, blogs, setBlog, user }) => {
 
     return (
       <>
-        <button onClick={toggdetails}>hide</button>
-        <div>
+        <button  onClick={toggdetails}>hide</button>
+        <div className="url">
           {blog.url}
         </div>
-        <div>
+        <div className="likes">
           likes {blog.likes} <button onClick={updateLike}>like</button>
         </div>
-        <div>
+        <div className="author">
           {blog.author}
         </div>
         <div>
@@ -78,7 +80,7 @@ const Blog = ({ blog, blogs, setBlog, user }) => {
     )
   }
 
-  return (<div style={blogstyle}>
+  return (<div style={blogstyle} className="title" >
     {blog.title} {showDetails ? <Details></Details> : <button onClick={toggdetails}>view</button>}
   </div>)
 }
